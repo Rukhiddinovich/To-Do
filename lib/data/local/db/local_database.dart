@@ -41,7 +41,8 @@ class LocalDatabase {
     ${ToDoModelFields.eventDescription} $textType,
     ${ToDoModelFields.eventLocation} $textType,
     ${ToDoModelFields.eventColor} $textType,
-    ${ToDoModelFields.eventTime} $textType
+    ${ToDoModelFields.eventTime} $textType,
+    ${ToDoModelFields.day} $textType
     )
     ''');
 
@@ -56,7 +57,6 @@ class LocalDatabase {
   }
 
   static Future<List<ToDoModel>> getAllTodos() async {
-
     final db = await getInstance.database;
     List<ToDoModel> allToDos = (await db.query(ToDoModelFields.eventTable))
         .map((e) => ToDoModel.fromJson(e))

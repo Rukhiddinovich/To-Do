@@ -16,11 +16,10 @@ class ToDoModel {
   final String eventLocation;
   final String eventColor;
   final String eventTime;
-  final String day;
+  final String? day;
 
   ToDoModel(
-      {this.id,
-      required this.day,
+      {this.id, this.day,
       required this.eventColor,
       required this.eventDescription,
       required this.eventLocation,
@@ -76,7 +75,7 @@ class ToDoModel {
       ToDoModelFields.eventName: eventName,
       ToDoModelFields.eventTime: eventTime,
       ToDoModelFields.eventColor: eventColor,
-      ToDoModelFields.day: day,
+      ToDoModelFields.day: day
     };
   }
 

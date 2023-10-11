@@ -31,6 +31,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
   TextEditingController eventDescriptionController = TextEditingController();
   TextEditingController eventLocationController = TextEditingController();
   TextEditingController eventTimeController = TextEditingController();
+  TextEditingController eventDayController = TextEditingController();
 
   var timeFormatter = MaskTextInputFormatter(
       mask: '*#:&# - *#:&#',
@@ -137,7 +138,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
                     eventNameController.text.isNotEmpty) {
                   BlocProvider.of<ToDoBloc>(context).add(AddToDo(
                       newEvents: ToDoModel(
-                          day: "${DateTime.now().day}.${DateTime.now().month}",
+                          day: eventDayController.text,
                           eventColor: selectedColor.toString(),
                           eventDescription: eventDescriptionController.text,
                           eventLocation: eventLocationController.text,
@@ -149,7 +150,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
                       message: "The data is incomplete!", context: context);
                 }
               },
-              child: GlobalButton(
+              child: const GlobalButton(
                   buttonText: "Add", buttonColor: AppColors.C_009FEE),
             ),
           ],

@@ -310,7 +310,6 @@ class _DatePickerModeToggleButtonState
   @override
   Widget build(BuildContext context) {
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
-    final TextTheme textTheme = Theme.of(context).textTheme;
     final Color controlColor = colorScheme.onSurface.withOpacity(0.60);
 
     return Container(
@@ -940,7 +939,6 @@ class _DayState extends State<Day> {
 
     final DatePickerThemeData defaults = DatePickerTheme.defaults(context);
     final DatePickerThemeData datePickerTheme = DatePickerTheme.of(context);
-    final TextStyle? dayStyle = datePickerTheme.dayStyle ?? defaults.dayStyle;
     T? effectiveValue<T>(T? Function(DatePickerThemeData? theme) getProperty) {
       return getProperty(datePickerTheme) ?? getProperty(defaults);
     }
