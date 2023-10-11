@@ -7,7 +7,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:todo_task/bloc/todo/todo_bloc.dart';
 import 'package:todo_task/data/model/form_status.dart';
 import 'package:todo_task/data/model/todo_model.dart';
-import 'package:todo_task/ui/app_routes.dart';
 import 'package:todo_task/utils/colors/colors.dart';
 import 'package:todo_task/utils/icons/icons.dart';
 import 'package:todo_task/utils/size/size_extension.dart';
@@ -223,8 +222,8 @@ class _DetailScreenState extends State<DetailScreen> {
                           actions: [
                             TextButton(
                               onPressed: () async {
-                                context.read<ToDoBloc>().add(
-                                    DeleteTodo(toDoId: widget.toDoModel.id ?? 0));
+                                context.read<ToDoBloc>().add(DeleteTodo(
+                                    toDoId: widget.toDoModel.id ?? 0));
                                 const snackBar = SnackBar(
                                   content: Text(
                                     "Event deleted successfully",
@@ -238,8 +237,8 @@ class _DetailScreenState extends State<DetailScreen> {
                                 );
                                 ScaffoldMessenger.of(context)
                                     .showSnackBar(snackBar);
-                                Navigator.pushReplacementNamed(
-                                    context, RouteNames.homeScreen);
+                                Navigator.pop(context);
+                                Navigator.pop(context);
                               },
                               child: Text(
                                 "YES",

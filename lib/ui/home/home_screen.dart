@@ -9,6 +9,7 @@ import 'package:todo_task/ui/app_routes.dart';
 import 'package:todo_task/ui/home/widgets/calendar.dart';
 import 'package:todo_task/ui/home/widgets/global_container.dart';
 import 'package:todo_task/utils/colors/colors.dart';
+import 'package:todo_task/utils/constants/constants.dart';
 import 'package:todo_task/utils/icons/icons.dart';
 import 'package:todo_task/utils/size/size_extension.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
@@ -105,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: [SvgPicture.asset(AppIcons.notification), 28.pw],
         centerTitle: true,
       ),
-      body: BlocBuilder<ToDoBloc, ToDoState>(
+      body: BlocConsumer<ToDoBloc, ToDoState>(
         builder: (context, state) {
           return Column(
             children: [
@@ -238,6 +239,14 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
           );
+        },
+        listener: (context, state) {
+          if(state.statusText ==StatusTextConstants.todoDelete){
+            setState(() {
+              BlocProvider.of<ToDoBloc>(context).add(GeToDo());
+              todoList = BlocProvider.of<ToDoBloc>(context).newEvents;
+            });
+          }
         },
       ),
     );
