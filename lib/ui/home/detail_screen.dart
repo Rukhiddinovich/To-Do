@@ -224,7 +224,7 @@ class _DetailScreenState extends State<DetailScreen> {
                             TextButton(
                               onPressed: () async {
                                 context.read<ToDoBloc>().add(
-                                    DeleteTodo(toDoId: widget.toDoModel.id!));
+                                    DeleteTodo(toDoId: widget.toDoModel.id ?? 0));
                                 const snackBar = SnackBar(
                                   content: Text(
                                     "Event deleted successfully",
